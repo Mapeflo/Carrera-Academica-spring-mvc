@@ -17,4 +17,8 @@ public interface CarreraAcademicaRepository extends JpaRepository<CarreraAcademi
     List<CarreraAcademica> findByEsAcreditada(Boolean esAcreditada);
 
     List<CarreraAcademica> findByAreaConocimientoContainingIgnoreCase(String area);
+
+    List<CarreraAcademica> findByUniversidadAndNivelFormacion(String universidad, String nivelFormacion);
+
+    List<CarreraAcademica> findByEsAcreditadaTrueAndValorSemestreBetween(Double min, Double max);
 }
