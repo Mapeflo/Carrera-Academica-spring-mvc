@@ -13,12 +13,12 @@ public class Usuario {
     private String nombre;
     private String clave;
     private String rol;
-
+    private String email;
 
     public Usuario() {
     }
 
-    public Usuario(String nombre, String clave, String rol) {
+    public Usuario(String nombre, String clave, String rol, String email) {
         this.nombre = nombre;
         this.clave = clave;
         this.rol = rol;
@@ -55,4 +55,8 @@ public class Usuario {
     public void setRol(String rol) {
         this.rol = rol;
     }
+
+    public String getEmail() { return email;}
+
+    public void setEmail(String email) { this.email = email;}
 }

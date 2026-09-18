@@ -35,12 +35,14 @@ public class UsuarioService {
         return usuarioRepository.findByNombre(nombre);
     }
 
-
     public List<Usuario> buscarPorRol(String rol) {
         return usuarioRepository.findByRol(rol);
     }
 
     public List<Usuario> buscarPorNombreParcial(String nombre) {
         return usuarioRepository.findByNombreContainingIgnoreCase(nombre);
+    }
+    public Usuario buscarPorEmail(String email) {
+        return usuarioRepository.findByEmail(email);
     }
 }
