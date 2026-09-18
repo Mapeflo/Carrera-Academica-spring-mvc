@@ -19,13 +19,7 @@ public class UsuarioService {
         return usuarioRepository.findAll();
     }
 
-    private PasswordEncoder passwordEncoder;
-
     public Usuario guardar(Usuario usuario) {
-
-        if (usuario.getClave() != null && !usuario.getClave().startsWith("$2a$")) {
-            usuario.setClave(passwordEncoder.encode(usuario.getClave()));
-        }
         return usuarioRepository.save(usuario);
     }
 
@@ -39,5 +33,13 @@ public class UsuarioService {
 
     public Optional<Usuario> buscarPorNombre(String nombre) {
         return usuarioRepository.findByNombre(nombre);
+    }
+
+    public List<Usuario> buscarPorRol(String rol) {
+        return usuarioRepository.findByRol(rol);
+    }
+
+    public List<Usuario> buscarPorNombreParcial(String nombre) {
+        return usuarioRepository.findByNombreContainingIgnoreCase(nombre);
     }
 }
