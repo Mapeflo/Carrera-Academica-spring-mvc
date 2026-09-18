@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Reportes de Usuarios</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container mt-4">
+
+<h1 class="mb-4">Reportes de Usuarios</h1>
+
+<a th:href="@{/usuarios}" class="btn btn-secondary mb-4">Volver al listado</a>
+
+<div class="row">
+    <!-- Reporte por Rol -->
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                Buscar por Rol
+            </div>
+            <div class="card-body">
+                <form th:action="@{/usuarios/reporte/rol}" method="get">
+                    <div class="mb-3">
+                        <label class="form-label">Rol</label>
+                        <select name="rol" class="form-select" required>
+                            <option value="">Seleccione un rol</option>
+                            <option value="admin">admin</option>
+                            <option value="user">user</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Generar Reporte</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reporte por Nombre -->
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-header bg-success text-white">
+                Buscar por Nombre (parcial)
+            </div>
+            <div class="card-body">
+                <form th:action="@{/usuarios/reporte/nombre}" method="get">
+                    <div class="mb-3">
+                        <label class="form-label">Nombre</label>
+                        <input type="text" name="nombre" class="form-control" placeholder="Ej: Juan" required>
+                    </div>
+                    <button type="submit" class="btn btn-success">Generar Reporte</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

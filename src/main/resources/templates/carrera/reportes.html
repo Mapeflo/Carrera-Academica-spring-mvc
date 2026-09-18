@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Reportes de Carreras Académicas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container mt-4">
+
+<h1 class="mb-4">Reportes de Carreras Académicas</h1>
+
+<a th:href="@{/carreras}" class="btn btn-secondary mb-4">Volver al listado</a>
+
+<div class="row">
+    <!-- Reporte Universidad + Nivel -->
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                Universidad + Nivel de Formación
+            </div>
+            <div class="card-body">
+                <form th:action="@{/carreras/reporte/universidad-nivel}" method="get">
+                    <div class="mb-3">
+                        <label class="form-label">Universidad</label>
+                        <input type="text" name="universidad" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Nivel de Formación</label>
+                        <input type="text" name="nivelFormacion" class="form-control" placeholder="Ej: Pregrado" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Generar Reporte</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reporte Acreditadas por rango -->
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-header bg-success text-white">
+                Carreras Acreditadas por rango de valor
+            </div>
+            <div class="card-body">
+                <form th:action="@{/carreras/reporte/acreditadas}" method="get">
+                    <div class="mb-3">
+                        <label class="form-label">Valor mínimo</label>
+                        <input type="number" step="0.01" name="min" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Valor máximo</label>
+                        <input type="number" step="0.01" name="max" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-success">Generar Reporte</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
