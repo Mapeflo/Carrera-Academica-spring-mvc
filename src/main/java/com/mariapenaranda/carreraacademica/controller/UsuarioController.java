@@ -52,6 +52,7 @@ public class UsuarioController {
         usuarioService.eliminar(id);
         return "redirect:/usuarios";
     }
+
     //REPORTES
     @GetMapping("/reportes")
     public String mostrarReportes() {

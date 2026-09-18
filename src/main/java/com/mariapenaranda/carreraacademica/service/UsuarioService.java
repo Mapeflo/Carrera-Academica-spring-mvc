@@ -35,6 +35,7 @@ public class UsuarioService {
         return usuarioRepository.findByNombre(nombre);
     }
 
+
     public List<Usuario> buscarPorRol(String rol) {
         return usuarioRepository.findByRol(rol);
     }
