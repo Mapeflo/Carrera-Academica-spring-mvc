@@ -52,4 +52,34 @@ public class CarreraController {
         carreraService.eliminar(id);
         return "redirect:/carreras";
     }
+
+    //REPORTES
+    @GetMapping("/reportes")
+    public String mostrarReportes() {
+        return "carrera/reportes";
+    }
+
+    @GetMapping("/reporte/universidad-nivel")
+    public String reportePorUniversidadYNivel(
+            @RequestParam String universidad,
+            @RequestParam String nivelFormacion,
+            Model model) {
+
+        model.addAttribute("carreras",
+                carreraService.buscarPorUniversidadYNivel(universidad, nivelFormacion));
+        model.addAttribute("titulo", "Carreras de " + universidad + " - Nivel: " + nivelFormacion);
+        return "carrera/listar";
+    }
+
+    @GetMapping("/reporte/acreditadas")
+    public String reporteAcreditadasPorRango(
+            @RequestParam Double min,
+            @RequestParam Double max,
+            Model model) {
+
+        model.addAttribute("carreras",
+                carreraService.buscarAcreditadasPorRangoValor(min, max));
+        model.addAttribute("titulo", "Carreras Acreditadas entre $" + min + " y $" + max);
+        return "carrera/listar";
+    }
 }

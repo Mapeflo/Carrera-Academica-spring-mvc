@@ -52,4 +52,23 @@ public class UsuarioController {
         usuarioService.eliminar(id);
         return "redirect:/usuarios";
     }
+    //REPORTES
+    @GetMapping("/reportes")
+    public String mostrarReportes() {
+        return "usuario/reportes";
+    }
+
+    @GetMapping("/reporte/rol")
+    public String reportePorRol(@RequestParam String rol, Model model) {
+        model.addAttribute("usuarios", usuarioService.buscarPorRol(rol));
+        model.addAttribute("titulo", "Usuarios con rol: " + rol);
+        return "usuario/listar";
+    }
+
+    @GetMapping("/reporte/nombre")
+    public String reportePorNombre(@RequestParam String nombre, Model model) {
+        model.addAttribute("usuarios", usuarioService.buscarPorNombreParcial(nombre));
+        model.addAttribute("titulo", "Usuarios que contienen: " + nombre);
+        return "usuario/listar";
+    }
 }
