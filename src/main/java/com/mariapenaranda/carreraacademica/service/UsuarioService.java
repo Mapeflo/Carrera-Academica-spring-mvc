@@ -23,11 +23,8 @@ public class UsuarioService {
 
     public Usuario guardar(Usuario usuario) {
 
-        if (usuario.getClave() != null && !usuario.getClave().isBlank()) {
-
-            if (!usuario.getClave().startsWith("$2a$")) {
-                usuario.setClave(passwordEncoder.encode(usuario.getClave()));
-            }
+        if (usuario.getClave() != null && !usuario.getClave().startsWith("$2a$")) {
+            usuario.setClave(passwordEncoder.encode(usuario.getClave()));
         }
         return usuarioRepository.save(usuario);
     }
