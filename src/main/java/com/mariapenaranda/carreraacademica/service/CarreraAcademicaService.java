@@ -46,4 +46,11 @@ public class CarreraAcademicaService {
     public List<CarreraAcademica> buscarPorArea(String area) {
         return carreraRepository.findByAreaConocimientoContainingIgnoreCase(area);
     }
+    public List<CarreraAcademica> buscarPorUniversidadYNivel(String universidad, String nivelFormacion) {
+        return carreraRepository.findByUniversidadAndNivelFormacion(universidad, nivelFormacion);
+    }
+
+    public List<CarreraAcademica> buscarAcreditadasPorRangoValor(Double min, Double max) {
+        return carreraRepository.findByEsAcreditadaTrueAndValorSemestreBetween(min, max);
+    }
 }
